@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="PluginProg_Hausarbeit.ToolWindow1Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Background="#FFFFFF"
+             Foreground="#000000"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Name="MyToolWindow">
+   
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            
+            <Expander x:Name="Bedingungen" Header="Cases" ExpandDirection="Down"  >
+                <Grid Background="#FFE5E5E5">
+                    <ListBox>
+                        <ListBoxItem>
+                            <TextBox>
+                                If-Case
+                            </TextBox>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <TextBox>
+                                Switch-Case
+                            </TextBox>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </Expander>
+
+            <Expander x:Name="Schleifen" Header="Loops">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox>
+                        <ListBoxItem>
+                            <TextBox>
+                                For-Loop
+                            </TextBox>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <TextBox>
+                                While-Loop
+                            </TextBox>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </Expander>
+
+            <Expander x:Name="Commands" Header="Commands">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox>
+                        <ListBoxItem>
+                            <TextBox>
+                                Paste-Command
+                            </TextBox>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </Expander>
+           
+
+        </StackPanel>
+        <Button x:Name="button" Content="Paste into Code" Command="ApplicationCommands.Paste"  Margin="203,265,0,0" Click="button_Click"/>
+    </Grid>
+</UserControl>
