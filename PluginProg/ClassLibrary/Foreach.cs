@@ -1,12 +1,14 @@
 ﻿using Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
+    [Export(typeof(ILoopInterface))]
     public class Foreach : Construct, ILoopInterface
     {
         public string LoopCondition

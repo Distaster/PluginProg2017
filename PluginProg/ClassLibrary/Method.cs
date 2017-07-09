@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Interface;
+using System.ComponentModel.Composition;
+
 namespace ClassLibrary
 {
+    //[Export(typeof(IOthersInterface))]
     public class Method : Construct, IOthersInterface
     {
         public override void execute()

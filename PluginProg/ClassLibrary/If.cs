@@ -22,7 +22,7 @@ namespace ClassLibrary
         {
             get
             {
-                return "If-Bedingung";
+                return "If";
             }
         }
 

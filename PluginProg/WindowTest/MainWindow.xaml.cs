@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClassLibrary;
+using Interface;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+
 namespace WindowTest
 {
     /// <summary>
@@ -20,61 +24,133 @@ namespace WindowTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        String varKind = "";
+        [ImportMany(typeof(IConditionInterface))]
+        IEnumerable<IConditionInterface> conditions = null;
+
+        [ImportMany(typeof(ILoopInterface))]
+        IEnumerable<ILoopInterface> loops = null;
+
+        [ImportMany(typeof(IOthersInterface))]
+        IEnumerable<IOthersInterface> others = null;
         public MainWindow()
         {
             InitializeComponent();
-        }
+            var catalog = new DirectoryCatalog(".");
+            var container = new CompositionContainer(catalog);
+            container.ComposeParts(this);
+            Condition.ItemsSource = conditions;
+            DataTransport[] data = new DataTransport[1];
+            data[0] = new DataTransport();
+            data[0].Text = "Füg mich ein!";
+            AllConditions.ItemsSource = data;
+            OthersList.ItemsSource = others;
+            LoopList.ItemsSource = loops;
+            if (conditions.Count() == 0)
+            {
+                MessageBox.Show("Es konnten keine Bedingungen gefunden werden!", "Fehler!");
+            }
+            else if(loops.Count()==0)
+            {
+                MessageBox.Show("Es konnten keine Schleifen gefunden werden!", "Fehler!");
+            }
+            else if (others.Count() == 0)
+            {
+                MessageBox.Show("Es konnten keine anderen Konstrukte gefunden werden!", "Fehler!");
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            varKind=((sender as ComboBox).SelectedItem as ComboBoxItem).Tag.ToString();
-            
+            }
         }
 
         private void counter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int count = Int32.Parse(((sender as ComboBox).SelectedItem as ComboBoxItem).Tag.ToString());
-            DataTransport[] data = new DataTransport[count];
-            for(int i = 0; i < count; i++)
+            int var = ((sender as ComboBox).SelectedIndex + 1);
+            DataTransport[] data = new DataTransport[var];
+            for(int c = 0; c < data.Length; c++)
             {
-                data[i] = new DataTransport();
-                data[i].Text = "bitte casewert eingeben";
+                data[c] = new DataTransport();
+                data[c].Text = "Füg mich ein!";
             }
-            if (listBox != null)
+            if (AllConditions != null)
             {
-                listBox.ItemsSource = data;
+                AllConditions.ItemsSource = data;
             }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Switch s = new Switch();
-            int c = 0;
-            foreach(var item in listBox.ItemsSource)
+            try
             {
-                c++;
-            }
-            String[] cases = new String[c];
-            c = 0;
-            foreach(DataTransport item in listBox.ItemsSource)
-            {
-                if (varKind.Equals("char")){
-                    cases[c] ="'"+item.Text+"'";
+                if ((sender as Button).Name.Equals("GenerateCondition"))
+                 {
+
+                IConditionInterface i = Condition.SelectedItem as IConditionInterface;
+                if (i != null)
+                {
+                    i.variable = Variable.Text;
+                    string[] cons = new string[Counter.SelectedIndex + 1];
+                    int count = 0;
+                    foreach (DataTransport item in AllConditions.ItemsSource)
+                    {
+                        cons[count] = item.Text;
+                        count++;
+                    }
+                    i.conditions = cons;
+                    i.execute();
                 }
                 else
                 {
-                    cases[c] = item.Text;
+                    MessageBox.Show("Du musst eine Bedingungsart aussuchen!", "Fehler!");
                 }
-                
-                c++;
-            }
-            s.conditions = cases;
-            s.variable = varKind+" "+varname.Text;
-            s.execute();
+            }else if ((sender as Button).Name.Equals("GenerateLoop"))
+            {
+                ILoopInterface i = LoopList.SelectedItem as ILoopInterface;
+                if (i != null)
+                {
+                    i.variable = LoopVar.Text;
+                    i.LoopCounter = (counting.SelectedItem as ComboBoxItem).Content.ToString();
+                    i.LoopCondition = Abbruch.Text;
+                    i.variableValue = Int32.Parse(LoopValue.Text);
+                    i.execute();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Du musst eine Schleifenart aussuchen!", "Fehler!");
+                }
+              }else if((sender as Button).Name.Equals("GenerateMethod"))
+                {
+                    IOthersInterface i = OthersList.SelectedItem as IOthersInterface;
+                    if (i != null)
+                    {
+                        i.ConstructName = name.Text;
+                        i.ConstructParameter = parameter.Text;
+                        i.ConstructReturnValue = @return.Text;
+                        i.ConstructVisibilty = (sichtbarkeit.SelectedItem as ComboBoxItem).Content.ToString();
+                        i.execute();
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Du musst eine Art aussuchen!", "Fehler!");
+                    }
+                }
+            }catch(FormatException exc)
+            {
+                MessageBox.Show("Bitte geben sie bei der Variablenbefüllung nur zahlen ein!", "Fehler!");
+            }
         }
 
-       
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(((sender as ListBox).SelectedItem as ILoopInterface).Name.Equals("For"))
+            {
+                LoopValue.IsEnabled = true;
+                counting.IsEnabled = true;
+            }
+            else
+            {
+                LoopValue.IsEnabled = false;
+                counting.IsEnabled = false;
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace ClassLibrary
         {
             get
             {
-                return "For-Schleife";
+                return "For";
             }
         }
 
@@ -29,7 +29,7 @@ namespace ClassLibrary
 
         public override void execute()
         {
-            string text = "for(int " + variable +"="+variableValue+ ";"+variable + LoopCondition +";"+LoopCounter+") \n { \n \n }";
+            string text = "for(int " + variable +"="+variableValue+ ";"+variable + LoopCondition +";"+variable+LoopCounter+") \n { \n \n }";
             pasteInto(text);
 
         }

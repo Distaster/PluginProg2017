@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ClassLibrary
 {
-    [Export(typeof(Switch))]
+    [Export(typeof(IConditionInterface))]
     public class Switch :Construct, IConditionInterface
     {
         public string variable
@@ -20,7 +20,7 @@ namespace ClassLibrary
         {
             get
             {
-                return "Switch-Bedingung";
+                return "Switch";
             }
         }
         

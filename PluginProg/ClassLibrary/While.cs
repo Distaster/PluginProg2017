@@ -18,7 +18,7 @@ namespace ClassLibrary
         {
             get
             {
-                return "While-Schleife";
+                return "While";
             }
         }
 

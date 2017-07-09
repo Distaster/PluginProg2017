@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="CodeGeneratorPackage.cs" company="Company">
+// <copyright file="QuickCodePackage.cs" company="Company">
 //     Copyright (c) Company.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
 
-namespace PluginProg
+namespace QuickCode
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -38,20 +38,20 @@ namespace PluginProg
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(typeof(CodeGenerator))]
-    [Guid(CodeGeneratorPackage.PackageGuidString)]
+    [ProvideToolWindow(typeof(QuickCode))]
+    [Guid(QuickCodePackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
-    public sealed class CodeGeneratorPackage : Package
+    public sealed class QuickCodePackage : Package
     {
         /// <summary>
-        /// CodeGeneratorPackage GUID string.
+        /// QuickCodePackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "88c65b8d-959d-45a9-a104-ad4ba79d2776";
+        public const string PackageGuidString = "67e84903-11b0-46b6-a4db-b8fba0faa9f0";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CodeGenerator"/> class.
+        /// Initializes a new instance of the <see cref="QuickCode"/> class.
         /// </summary>
-        public CodeGeneratorPackage()
+        public QuickCodePackage()
         {
             // Inside this method you can place any initialization code that does not require
             // any Visual Studio service because at this point the package object is created but
@@ -67,7 +67,7 @@ namespace PluginProg
         /// </summary>
         protected override void Initialize()
         {
-            CodeGeneratorCommand.Initialize(this);
+            QuickCodeCommand.Initialize(this);
             base.Initialize();
         }
 
