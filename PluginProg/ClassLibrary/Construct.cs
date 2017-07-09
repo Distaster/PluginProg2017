@@ -11,6 +11,8 @@ namespace ClassLibrary
 {
     public abstract class Construct : IConstructInterface
     {
+        public abstract string Name { get; }
+
         public void pasteInto(String text)
         {
             RunAsSTAThread(() =>

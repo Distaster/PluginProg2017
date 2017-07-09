@@ -8,8 +8,10 @@ namespace Interface
 {
     public interface ILoopInterface:IConstructInterface
     {
-        string Name { get; }
-        void setClipText(String text);
         
+        string LoopCondition { set; get; }
+        string variable { get; set; }
+        string LoopCounter { get; set; }
+        int variableValue { get; set; }
     }
 }

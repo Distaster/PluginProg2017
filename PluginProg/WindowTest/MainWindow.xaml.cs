@@ -69,7 +69,7 @@ namespace WindowTest
                 
                 c++;
             }
-            s.Cases = cases;
+            s.conditions = cases;
             s.variable = varKind+" "+varname.Text;
             s.execute();
 

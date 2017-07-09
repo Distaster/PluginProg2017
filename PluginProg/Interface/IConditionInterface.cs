@@ -9,9 +9,8 @@ namespace Interface
     
     public interface IConditionInterface : IConstructInterface
     {
-        int ConditionCount { set; get; }
-        string Name { get; }
-        void setClipText(String text);
         
+        string[] conditions { get; set; }
+        string variable { get; set; }
     }
 }

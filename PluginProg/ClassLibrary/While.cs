@@ -5,22 +5,32 @@ using System.ComponentModel.Composition;
 namespace ClassLibrary
 {
     [Export(typeof(ILoopInterface))]
-    class While : Construct,ILoopInterface
+    public class While : Construct,ILoopInterface
     {
-        public string ReturnString { get; set; }
-        public string Name
+        public string LoopCondition { set; get; }
+
+        public string LoopCounter
+        {
+            get; set;
+        }
+        public int variableValue { get; set; }
+        public override string Name
         {
             get
             {
                 return "While-Schleife";
             }
         }
-        public void setClipText(string text)
+
+        public string variable
         {
-            pasteInto(text);
+            get; set;
         }
+
         public override void execute()
         {
+            string text = "while(" + variable +" " + LoopCondition +") \n { \n \n }";
+            pasteInto(text);
 
         }
     }

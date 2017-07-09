@@ -14,41 +14,25 @@ namespace ClassLibrary
         {
             get; set;
         }
-        public string[] Cases { get; set; }
-        public string ReturnString { get; set; }
-        public int ConditionCount
+        public string[] conditions { get; set; }
+
+        public override string Name
         {
             get
             {
-                return ConditionCount;
-            }
-
-            set
-            {
-                ConditionCount = value;
+                return "Switch-Bedingung";
             }
         }
-
-        public string Name
-        {
-            get
-            {
-                return "Switch";
-            }
-        }
-        public void setClipText(string text)
-        {
-            pasteInto(text);
-        }
+        
         public override void execute()
         {
             string text = "switch("+variable+") \n { \n";
-            for(int counter = 0; counter < Cases.Length; counter++)
+            for(int counter = 0; counter < conditions.Length; counter++)
             {
-                text += "    case " + Cases[counter] + ": break; \n";
+                text += "    case " + conditions[counter] + ": break; \n";
             }
             text += "}";
-            setClipText(text);
+            pasteInto(text);
         }
     }
 }

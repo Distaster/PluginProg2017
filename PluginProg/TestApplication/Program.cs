@@ -12,8 +12,7 @@ namespace TestApplication
 {
     class Program
     {
-        [ImportMany(typeof(Switch))]
-        IEnumerable<Switch> switchi = null;
+        Method i;
         static void Main(string[] args)
         {
             new Program().run();
@@ -23,18 +22,13 @@ namespace TestApplication
             var catalog = new DirectoryCatalog(".");
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
-            foreach (var switchi in switchi)
-            {
-                String[] cases = new String[5];
-                cases[0] = "'a'";
-                cases[1] = "'b'";
-                cases[2] = "'c'";
-                cases[3] = "'d'";
-                cases[4] = "'e'";
-                switchi.variable = "char c";
-                switchi.Cases = cases;
-                switchi.execute();
-            }
+            i = new Method ();
+            i.ConstructReturnValue = "int";
+            i.ConstructName= "add";
+            i.ConstructParameter = "int a";
+            i.ConstructVisibilty = "public";
+            i.execute();
+          
             Console.WriteLine("fertsch");
             Console.ReadKey();
         }

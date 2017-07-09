@@ -10,23 +10,15 @@ using System.Threading.Tasks;
 namespace ClassLibrary
 {
     [Export(typeof(IConditionInterface))]
-    class If :Construct, IConditionInterface
+    public class If :Construct, IConditionInterface
     {
-        public string ReturnString { get; set; }
-        public int ConditionCount
+        public string variable
         {
-            get
-            {
-                return ConditionCount;
-            }
-
-            set
-            {
-                ConditionCount = value;
-            }
+            get; set;
         }
+        public string[] conditions { get; set; }
 
-        public string Name
+        public override string Name
         {
             get
             {
@@ -36,11 +28,17 @@ namespace ClassLibrary
 
         public override void execute()
         {
-            
-        }
-        
-        public void setClipText(string text)
-        {
+            string text = "if(" + variable +" "+conditions[0]+ ") \n { \n \n }" ;
+            for(int counter = 1; counter < conditions.Length; counter++)
+            {
+              
+                   
+               
+                    text += "else if("+variable+" "+conditions[counter] + ")\n { \n \n }";
+                
+                
+            }
+            text += "else \n { \n \n }";
             pasteInto(text);
         }
     }

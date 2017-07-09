@@ -8,7 +8,7 @@ namespace Interface
 {
     public interface IConstructInterface
     {
-       
+        string Name { get; }
         void pasteInto(String text);
         void RunAsSTAThread(Action goForIt);
         void execute();

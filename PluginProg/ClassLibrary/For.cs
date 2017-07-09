@@ -5,23 +5,34 @@ using System.ComponentModel.Composition;
 namespace ClassLibrary
 {
     [Export(typeof(ILoopInterface))]
-    class For :Construct, ILoopInterface
+    public class For :Construct, ILoopInterface
     {
-        public string ReturnString { get; set; }
-        public string Name
+        public string LoopCondition { set; get; }
+        public int variableValue { get; set; }
+        public string LoopCounter
+        {
+            get; set;
+        }
+
+        public override string Name
         {
             get
             {
-                throw new NotImplementedException();
+                return "For-Schleife";
             }
         }
-        public void setClipText(string text)
+
+        public string variable
         {
-            pasteInto(text);
+            get; set;
         }
+
         public override void execute()
         {
+            string text = "for(int " + variable +"="+variableValue+ ";"+variable + LoopCondition +";"+LoopCounter+") \n { \n \n }";
+            pasteInto(text);
 
         }
+        
     }
 }
