@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------
-// <copyright file="QuickCodeCommand.cs" company="Company">
+// <copyright file="CodeGeneratorCommand.cs" company="Company">
 //     Copyright (c) Company.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
@@ -10,12 +10,12 @@ using System.Globalization;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace QuickCode
+namespace PluginProg
 {
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class QuickCodeCommand
+    internal sealed class CodeGeneratorCommand
     {
         /// <summary>
         /// Command ID.
@@ -25,7 +25,7 @@ namespace QuickCode
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("404ad4ca-29e6-4930-a876-16b395b2899c");
+        public static readonly Guid CommandSet = new Guid("a67af3ce-3db2-4986-8a4f-357419000de9");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -33,11 +33,11 @@ namespace QuickCode
         private readonly Package package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="QuickCodeCommand"/> class.
+        /// Initializes a new instance of the <see cref="CodeGeneratorCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
-        private QuickCodeCommand(Package package)
+        private CodeGeneratorCommand(Package package)
         {
             if (package == null)
             {
@@ -58,7 +58,7 @@ namespace QuickCode
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static QuickCodeCommand Instance
+        public static CodeGeneratorCommand Instance
         {
             get;
             private set;
@@ -81,7 +81,7 @@ namespace QuickCode
         /// <param name="package">Owner package, not null.</param>
         public static void Initialize(Package package)
         {
-            Instance = new QuickCodeCommand(package);
+            Instance = new CodeGeneratorCommand(package);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace QuickCode
             // Get the instance number 0 of this tool window. This window is single instance so this instance
             // is actually the only one.
             // The last flag is set to true so that if the tool window does not exists it will be created.
-            ToolWindowPane window = this.package.FindToolWindow(typeof(QuickCode2), 0, true);
+            ToolWindowPane window = this.package.FindToolWindow(typeof(CodeGenerator), 0, true);
             if ((null == window) || (null == window.Frame))
             {
                 throw new NotSupportedException("Cannot create tool window");

@@ -22,12 +22,12 @@ namespace QuickCode
     /// </para>
     /// </remarks>
     [Guid("96b5bad0-f66e-4c00-83b9-5d6317bd69bf")]
-    public class QuickCode : ToolWindowPane
+    public class QuickCode2 : ToolWindowPane
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QuickCode"/> class.
+        /// Initializes a new instance of the <see cref="QuickCode2"/> class.
         /// </summary>
-        public QuickCode() : base(null)
+        public QuickCode2() : base(null)
         {
             this.Caption = "QuickCode";
 
