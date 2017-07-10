@@ -23,11 +23,11 @@ namespace QuickCode
     using Interface;
     using System.ComponentModel.Composition;
     using System.ComponentModel.Composition.Hosting;
-
-        /// <summary>
-        /// Interaction logic for MainWindow.xaml
-        /// </summary>
-        public partial class QuickCodeControl : UserControl
+    using System.Reflection;
+    using System.IO;    /// <summary>
+                        /// Interaction logic for MainWindow.xaml
+                        /// </summary>
+    public partial class QuickCodeControl : UserControl
         {
             [ImportMany(typeof(IConditionInterface))]
             IEnumerable<IConditionInterface> conditions = null;
@@ -40,9 +40,15 @@ namespace QuickCode
             public QuickCodeControl()
             {
                 this.InitializeComponent();
-                var catalog = new DirectoryCatalog(".");
-                var container = new CompositionContainer(catalog);
+
+            AggregateCatalog catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(new DirectoryCatalog("."));
+            CompositionContainer container = new CompositionContainer(catalog);
+            
+            try
+            {
                 container.ComposeParts(this);
+
                 Condition.ItemsSource = conditions;
                 DataTransport[] data = new DataTransport[1];
                 data[0] = new DataTransport();
@@ -64,6 +70,27 @@ namespace QuickCode
 
                 }
             }
+            catch (ReflectionTypeLoadException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (Exception exSub in ex.LoaderExceptions)
+                {
+                    sb.AppendLine(exSub.Message);
+                    FileNotFoundException exFileNotFound = exSub as FileNotFoundException;
+                    if (exFileNotFound != null)
+                    {
+                        if (!string.IsNullOrEmpty(exFileNotFound.FusionLog))
+                        {
+                            sb.AppendLine("Fusion Log:");
+                            sb.AppendLine(exFileNotFound.FusionLog);
+                        }
+                    }
+                    sb.AppendLine();
+                }
+                string errorMessage = sb.ToString();
+                MessageBox.Show(errorMessage);
+            }
+        }
 
             private void counter_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {

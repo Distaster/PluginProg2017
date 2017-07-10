@@ -51,10 +51,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
-      <Project>{a77c8ef0-c88e-42cd-b257-86df96e70bef}</Project>
-      <Name>ClassLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interface\Interface.csproj">
       <Project>{4125835a-45ac-4881-ab27-2edb7da4d072}</Project>
       <Name>Interface</Name>
