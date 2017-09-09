@@ -4,20 +4,20 @@ using System.ComponentModel.Composition;
 namespace ClassLibrary
 {
     [Export(typeof(ILoopInterface))]
-    public class For :Construct, ILoopInterface
+    public class While : Construct,ILoopInterface
     {
         public string LoopCondition { set; get; }
-        public int variableValue { get; set; }
+
         public string LoopCounter
         {
             get; set;
         }
-
+        public int variableValue { get; set; }
         public override string Name
         {
             get
             {
-                return "For";
+                return "While";
             }
         }
 
@@ -28,10 +28,9 @@ namespace ClassLibrary
 
         public override void execute()
         {
-            string text = "for(int " + variable +"="+variableValue+ ";"+variable + LoopCondition +";"+variable+LoopCounter+") \n { \n \n }";
+            string text = "while(" + variable +" " + LoopCondition +") \n { \n \n }";
             pasteInto(text);
 
         }
-        
     }
 }

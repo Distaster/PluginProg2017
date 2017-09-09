@@ -23,6 +23,8 @@ namespace Quickcode
             this.InitializeComponent();
             Importer i = new Importer();
             List.ItemsSource = i.loops;
+            List2.ItemsSource = i.conds;
+            List3.ItemsSource = i.others;
         }
 
         /// <summary>

@@ -15,8 +15,14 @@ namespace Quickcode
 {
     public class Importer
     {
-        [ImportMany(typeof(ILoop))]
+        [ImportMany(typeof(ILoopInterface))]
         public ArrayList loops = null;
+
+        [ImportMany(typeof(IConditionInterface))]
+        public ArrayList conds = null;
+
+        [ImportMany(typeof(IOthersInterface))]
+        public ArrayList others = null;
 
         public Importer()
         {
@@ -29,7 +35,16 @@ namespace Quickcode
                 MessageBox.Show("Import fehlgeschlagen. Die Listen werden nun Manuell befüllt");
                 loops = new ArrayList();
                 loops.Add(new For());
-                
+                loops.Add(new While());
+                loops.Add(new Foreach());
+
+                conds = new ArrayList();
+                conds.Add(new If());
+                conds.Add(new Switch());
+
+                others = new ArrayList();
+                others.Add(new Method());
+
             }
         }
     }

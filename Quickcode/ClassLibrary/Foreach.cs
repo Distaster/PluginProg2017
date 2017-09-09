@@ -4,10 +4,13 @@ using System.ComponentModel.Composition;
 namespace ClassLibrary
 {
     [Export(typeof(ILoopInterface))]
-    public class For :Construct, ILoopInterface
+    public class Foreach : Construct, ILoopInterface
     {
-        public string LoopCondition { set; get; }
-        public int variableValue { get; set; }
+        public string LoopCondition
+        {
+            get; set;
+        }
+
         public string LoopCounter
         {
             get; set;
@@ -17,7 +20,7 @@ namespace ClassLibrary
         {
             get
             {
-                return "For";
+                return "Foreach-Schleife";
             }
         }
 
@@ -26,12 +29,14 @@ namespace ClassLibrary
             get; set;
         }
 
+        public int variableValue
+        {
+            get; set;
+        }
         public override void execute()
         {
-            string text = "for(int " + variable +"="+variableValue+ ";"+variable + LoopCondition +";"+variable+LoopCounter+") \n { \n \n }";
+            string text = "foreach(var item in "+variable+") \n { \n \n } ";
             pasteInto(text);
-
         }
-        
     }
 }

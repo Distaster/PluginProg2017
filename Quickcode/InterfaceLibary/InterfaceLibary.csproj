@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICondition.cs" />
-    <Compile Include="IConstruct.cs" />
-    <Compile Include="ILoop.cs" />
+    <Compile Include="IConditionInterface.cs" />
+    <Compile Include="IConstructInterface.cs" />
+    <Compile Include="ILoopInterface.cs" />
+    <Compile Include="IOthersInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
