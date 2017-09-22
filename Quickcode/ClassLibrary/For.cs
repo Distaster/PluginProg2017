@@ -6,6 +6,18 @@ namespace ClassLibrary
     [Export(typeof(ILoopInterface))]
     public class For :Construct, ILoopInterface
     {
+        public For()
+        {
+            enums = new System.Collections.ArrayList();
+            enums.Add(InputType.LoopCondition);
+            enums.Add(InputType.VariableValue);
+            enums.Add(InputType.LoopCounter);
+            enums.Add(InputType.Variable);
+            LoopCondition = "Schleifenbedingung";
+            LoopCounter = "++";
+            variable = "variabale";
+            variableValue = 0;
+        }
         public string LoopCondition { set; get; }
         public int variableValue { get; set; }
         public string LoopCounter
@@ -26,10 +38,10 @@ namespace ClassLibrary
             get; set;
         }
 
-        public override void execute()
+        public override string execute()
         {
             string text = "for(int " + variable +"="+variableValue+ ";"+variable + LoopCondition +";"+variable+LoopCounter+") \n { \n \n }";
-            pasteInto(text);
+            return text;
 
         }
         

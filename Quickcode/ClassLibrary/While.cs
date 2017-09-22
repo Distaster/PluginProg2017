@@ -6,6 +6,14 @@ namespace ClassLibrary
     [Export(typeof(ILoopInterface))]
     public class While : Construct,ILoopInterface
     {
+        public While()
+        {
+            enums = new System.Collections.ArrayList();
+            enums.Add(InputType.LoopCondition);
+            enums.Add(InputType.Variable);
+            variable = "variable";
+            LoopCondition = "Bedingung";
+        }
         public string LoopCondition { set; get; }
 
         public string LoopCounter
@@ -26,10 +34,10 @@ namespace ClassLibrary
             get; set;
         }
 
-        public override void execute()
+        public override string execute()
         {
             string text = "while(" + variable +" " + LoopCondition +") \n { \n \n }";
-            pasteInto(text);
+            return text;
 
         }
     }

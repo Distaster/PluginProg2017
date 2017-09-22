@@ -2,13 +2,15 @@
 using InterfaceLibary;
 using System.Threading;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace ClassLibrary
 {
     public abstract class Construct : IConstructInterface
     {
         public abstract string Name { get; }
-
+       
+        protected ArrayList enums;
         public void pasteInto(String text)
         {
             RunAsSTAThread(() =>
@@ -28,6 +30,11 @@ namespace ClassLibrary
             thread.Start();
             @event.WaitOne();
         }
-        public abstract void execute();
+        public abstract string execute();
+
+        public ArrayList getEnums()
+        {
+            return enums;
+        }
     }
 }

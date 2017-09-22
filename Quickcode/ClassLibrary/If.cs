@@ -6,6 +6,15 @@ namespace ClassLibrary
     [Export(typeof(IConditionInterface))]
     public class If :Construct, IConditionInterface
     {
+        public If()
+        {
+            enums = new System.Collections.ArrayList();
+            enums.Add(InputType.Variable);
+            enums.Add(InputType.Conditions);
+            variable = "variable";
+            conditions = new string[1];
+            conditions[0] = "Bedingung";
+        }
         public string variable
         {
             get; set;
@@ -20,7 +29,7 @@ namespace ClassLibrary
             }
         }
 
-        public override void execute()
+        public override string execute()
         {
             string text = "if(" + variable +" "+conditions[0]+ ") \n { \n \n }" ;
             for(int counter = 1; counter < conditions.Length; counter++)
@@ -33,7 +42,7 @@ namespace ClassLibrary
                 
             }
             text += "else \n { \n \n }";
-            pasteInto(text);
+            return text;
         }
     }
 }

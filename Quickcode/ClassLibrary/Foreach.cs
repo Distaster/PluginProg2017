@@ -6,6 +6,12 @@ namespace ClassLibrary
     [Export(typeof(ILoopInterface))]
     public class Foreach : Construct, ILoopInterface
     {
+        public Foreach()
+        {
+            enums = new System.Collections.ArrayList();
+            enums.Add(InputType.Variable);
+            variable = "Variable";
+        }
         public string LoopCondition
         {
             get; set;
@@ -20,7 +26,7 @@ namespace ClassLibrary
         {
             get
             {
-                return "Foreach-Schleife";
+                return "Foreach";
             }
         }
 
@@ -33,10 +39,10 @@ namespace ClassLibrary
         {
             get; set;
         }
-        public override void execute()
+        public override string execute()
         {
             string text = "foreach(var item in "+variable+") \n { \n \n } ";
-            pasteInto(text);
+            return text;
         }
     }
 }

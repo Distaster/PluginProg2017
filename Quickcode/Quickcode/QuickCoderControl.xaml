@@ -6,45 +6,125 @@
              Background="Gray"
              Foreground="Black"
              mc:Ignorable="d"
-             d:DesignHeight="600" d:DesignWidth="300"
+             d:DesignHeight="300" d:DesignWidth="400"
              Name="MyToolWindow">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <TextBlock Margin="10" HorizontalAlignment="Center">QuickCoder</TextBlock>
-            <Button Content="Click me!" Click="button1_Click" Width="120" Height="80" Name="button1"/>
-            <ListBox Name="List">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Name="List2">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox Name="List3">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <ListBox x:Name="List4">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,543,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="content" HorizontalAlignment="Left" Height="103" Margin="153,463,0,0" TextWrapping="Wrap" Text="Content" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="createbutton" Content="create" HorizontalAlignment="Left" Margin="109,571,0,0" VerticalAlignment="Top" Width="75" Click="createbutton_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="35,250,0,0" TextWrapping="Wrap" Text="{Binding ElementName=List4,Path=SelectedItem.Content}" VerticalAlignment="Top" Height="43" Width="221"/>
-        <Button x:Name="searchbutton" Content="search" HorizontalAlignment="Left" Margin="109,316,0,0" VerticalAlignment="Top" Width="75" Click="createbutton_Click"/>
+
+    <Grid Background="#202020">
+        <TabControl Background="#2d2d30">
+            <TabItem Header="Schleifen">
+                <Grid Background="#2d2d30">
+                    <TextBlock Foreground="White"  FontSize="10" Margin="10,10,0,0" Height="13" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92">Bedingung</TextBlock>
+                    <TextBox Name="schleifenBedingung" Width="130" Height="22" Margin="10,28,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,57,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="37">Variable</TextBlock>
+                    <TextBox Name="schleifenVariable" Width="130" Height="20" Margin="10,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,105,0,0" HorizontalAlignment="Left" Width="33" Height="17" VerticalAlignment="Top">Value</TextBlock>
+                    <TextBox Name="schleifenValue" Width="130" Margin="10,127,0,125" HorizontalAlignment="Left"/>
+
+
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,0,0,107" Height="13" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="49">Counting</TextBlock>
+                    <ComboBox Name="schleifenCounting" Width="130" Height="19" Margin="10,0,0,83" HorizontalAlignment="Left" VerticalAlignment="Bottom" SelectedIndex="0">
+                        <ComboBoxItem  Name="schleifenCountingUp">++</ComboBoxItem>
+                        <ComboBoxItem  Name="schleifenCountingDown">--</ComboBoxItem>
+                    </ComboBox>
+
+                    <Button Click="button_Click" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertSchleifen" HorizontalAlignment="Left" d:LayoutOverrides="Width, Height" VerticalAlignment="Bottom"/>
+                    <ListBox Name="List" Margin="174,10,33,10" Background="#252526" SelectionChanged="List_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Bedingungen">
+                <Grid Background="#2d2d30">
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,10,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="112">Anzahl der Bedingungen</TextBlock>
+                    <ComboBox Name="bedingungenAmount" Width="63" Height="21" Margin="10,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="counter_SelectionChanged" SelectedIndex="0">
+                        <ComboBoxItem  Name="bedingungenAmount1">1</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount2">2</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount3">3</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount4">4</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount5">5</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount6">6</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount7">7</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount8">8</ComboBoxItem>
+                        <ComboBoxItem  Name="bedingungenAmount9">9</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,69,0,0" Height="16" VerticalAlignment="Top" HorizontalAlignment="Left" Width="105">Variablenbezeichnung</TextBlock>
+                    <TextBox Name="bedingungenVarName" Height="21" Margin="10,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="97"/>
+
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,116,0,139" HorizontalAlignment="Left" Width="75">Bedingungen</TextBlock>
+                    <ListBox Name="bedingungenBedingungen" Margin="10,138,0,40"  HorizontalAlignment="Left"  Background="#252526" Width="100">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Path=Text}"></TextBox>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Foreground="White" Click="button_Click" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertBedingungen" VerticalAlignment="Bottom" d:LayoutOverrides="Height" HorizontalAlignment="Left"/>
+                    <ListBox Name="List2" Margin="174,10,33,10" Background="#252526" SelectionChanged="List_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Andere Konstrukte">
+                <Grid Background="#2d2d30">
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,10,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="103">Sichtbarkeit</TextBlock>
+                    <ComboBox Name="andereKonstrukteVisibility" Width="120" Height="18" Margin="10,34,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedIndex="0">
+                        <ComboBoxItem  Name="public">public</ComboBoxItem>
+                        <ComboBoxItem  Name="private">private</ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,66,0,0" Height="22" VerticalAlignment="Top" HorizontalAlignment="Left" Width="81">Parameter</TextBlock>
+                    <TextBox Name="andereKonstrukteParameter" Width="120" Height="20" Margin="10,88,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" d:LayoutOverrides="Width"/>
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,112,0,0" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="91">Name</TextBlock>
+                    <TextBox Name="andereKonstrukteName" Width="120" Margin="10,132,0,122" HorizontalAlignment="Left" d:LayoutOverrides="Width"/>
+                    <TextBlock Foreground="White" FontSize="10" Margin="10,0,0,89" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="81">Rückgabetyp</TextBlock>
+                    <ComboBox Name="andereKonstrukteRueckgabetyp" Width="120" Height="18" Margin="10,0,0,71" HorizontalAlignment="Left" VerticalAlignment="Bottom" SelectedIndex="0">
+                        <ComboBoxItem  Name="int">Integer</ComboBoxItem>
+                        <ComboBoxItem  Name="double">Double</ComboBoxItem>
+                        <ComboBoxItem  Name="string">String</ComboBoxItem>
+                        <ComboBoxItem  Name="void">Void</ComboBoxItem>
+                    </ComboBox>
+                    <Button Click="button_Click" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertAndereKonstrukte" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
+                    <ListBox Name="List3" Margin="174,10,33,10" Background="#252526" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Eigene Konstrukte">
+                <Grid Background="#2d2d30" Margin="0,-1,0,1">
+                    <ListBox Name="List4" Margin="174,10,33,10" Background="#252526">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button  Click="ClickOnOwnConstruct" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertEigeneKonstrukte" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
+                    <Button  Click="ClickOnOwnConstruct" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukt speichern" Margin="10,0,0,89"  Width="100" Height="25" x:Name="saveEigeneKonstrukte" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <Button  Click="ClickOnOwnConstruct" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukte laden" Margin="10,0,0,50"  Width="100" Height="25" x:Name="loadEigeneKonstrukte" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" Text="Speichern sie eigene Konstrukte aus ihrer Zwischenablage!" VerticalAlignment="Top" RenderTransformOrigin="-0.014,0.375" Width="159" Foreground="White"/>
+                    <TextBox x:Name="eigeneKonstrukteName" HorizontalAlignment="Left" Height="23" Margin="10,96,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
+
 </UserControl>

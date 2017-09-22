@@ -41,7 +41,7 @@ namespace Quickcode
                 var catalog = new DirectoryCatalog(".");
                 var container = new CompositionContainer(catalog);                
                 container.ComposeParts(this);
-            }catch(ReflectionTypeLoadException e)
+            }catch(Exception e)
             {
                 System.Windows.MessageBox.Show("Import fehlgeschlagen. Die Listen werden nun Manuell befüllt");
                 fillListWithoutImport();
@@ -83,7 +83,7 @@ namespace Quickcode
             s += "hinzugefügt";
             System.Windows.MessageBox.Show(s);
         }
-        public void exportTxt(String name,String content)
+        public void exportTxt(string name,string content)
         {
             using(var fold = new FolderBrowserDialog())
             {

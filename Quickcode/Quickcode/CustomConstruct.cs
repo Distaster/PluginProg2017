@@ -8,13 +8,19 @@ namespace Quickcode
 {
     public class CustomConstruct
     {
-        public string name;
-        public string construct;
+        public string Name
+        {
+            get; set;
+        }
+        public string Construct
+        {
+            get; set;
+        }
 
         public CustomConstruct(string n,string c)
         {
-            name = n;
-            construct = c;
+            Name = n;
+            Construct = c;
         }
     }
 }

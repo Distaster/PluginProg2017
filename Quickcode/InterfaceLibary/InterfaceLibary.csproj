@@ -49,6 +49,7 @@
     <Compile Include="IConditionInterface.cs" />
     <Compile Include="IConstructInterface.cs" />
     <Compile Include="ILoopInterface.cs" />
+    <Compile Include="InputType.cs" />
     <Compile Include="IOthersInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -69,6 +69,7 @@ namespace Quickcode
         {
             QuickCoderCommand.Initialize(this);
             base.Initialize();
+            Command1.Initialize(this);
         }
 
         #endregion

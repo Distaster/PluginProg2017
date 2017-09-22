@@ -5,7 +5,14 @@ namespace ClassLibrary
     //[Export(typeof(IOthersInterface))]
     public class Method : Construct, IOthersInterface
     {
-        public override void execute()
+        public Method()
+        {
+            ConstructName = "Methode";
+            ConstructParameter = "Paramtertyp Parametername";
+            ConstructReturnValue = "Rückgabetyp";
+            ConstructVisibilty = "Sichtbarkeit";
+        }
+        public override string execute()
         {
             string text = ConstructVisibilty+" "+ConstructReturnValue+" "+ConstructName+"("+ConstructParameter+") \n { \n ";
             if (!ConstructReturnValue.Equals("void"))
@@ -13,7 +20,7 @@ namespace ClassLibrary
                 text += "   return " + ConstructReturnValue;
             }
             text+="\n }";
-            pasteInto(text);
+            return text;
         }
         public override string Name
         {
