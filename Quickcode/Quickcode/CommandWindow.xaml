@@ -8,7 +8,7 @@
              d:DesignHeight="350" d:DesignWidth="100" Width="100" Height="350">
     <Grid Background="#FF1E1E1E">
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Konstrukte" Foreground="White"/>
-        <ListBox x:Name="konstruke" Height="246" Margin="0,31,0,0" VerticalAlignment="Top" Background="#FF1E1E1E">
+        <ListBox x:Name="konstruke" Height="246" Margin="0,31,0,0" VerticalAlignment="Top" Background="#FF1E1E1E" Foreground="White">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=Name}"></TextBlock>

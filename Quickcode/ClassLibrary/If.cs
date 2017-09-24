@@ -6,9 +6,9 @@ namespace ClassLibrary
     [Export(typeof(IConditionInterface))]
     public class If :Construct, IConditionInterface
     {
-        public If()
+        public If() : base()
         {
-            enums = new System.Collections.ArrayList();
+            
             enums.Add(InputType.Variable);
             enums.Add(InputType.Conditions);
             variable = "variable";

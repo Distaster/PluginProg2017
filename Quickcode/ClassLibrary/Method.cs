@@ -1,11 +1,12 @@
 ﻿using InterfaceLibary;
+using System.ComponentModel.Composition;
 
 namespace ClassLibrary
 {
-    //[Export(typeof(IOthersInterface))]
+    [Export(typeof(IOthersInterface))]
     public class Method : Construct, IOthersInterface
     {
-        public Method()
+        public Method() : base()
         {
             ConstructName = "Methode";
             ConstructParameter = "Paramtertyp Parametername";

@@ -32,7 +32,7 @@
                     </ComboBox>
 
                     <Button Click="button_Click" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertSchleifen" HorizontalAlignment="Left" d:LayoutOverrides="Width, Height" VerticalAlignment="Bottom"/>
-                    <ListBox Name="List" Margin="174,10,33,10" Background="#252526" SelectionChanged="List_SelectionChanged">
+                    <ListBox Name="List" Margin="174,10,33,10" Background="#252526" SelectionChanged="List_SelectionChanged" Foreground="White">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}"></TextBlock>
@@ -69,7 +69,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                     <Button Foreground="White" Click="button_Click" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertBedingungen" VerticalAlignment="Bottom" d:LayoutOverrides="Height" HorizontalAlignment="Left"/>
-                    <ListBox Name="List2" Margin="174,10,33,10" Background="#252526" SelectionChanged="List_SelectionChanged">
+                    <ListBox Name="List2" Margin="174,10,33,10" Background="#252526" SelectionChanged="List_SelectionChanged" Foreground="White">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}"></TextBlock>
@@ -97,7 +97,7 @@
                         <ComboBoxItem  Name="void">Void</ComboBoxItem>
                     </ComboBox>
                     <Button Click="button_Click" Foreground="White" Background="#2d2d30" FontSize="10" Content="Konstrukt einfügen" Margin="10,0,0,10"  Width="100" Height="25" Name="insertAndereKonstrukte" HorizontalAlignment="Left" VerticalAlignment="Bottom" d:LayoutOverrides="Width, Height"/>
-                    <ListBox Name="List3" Margin="174,10,33,10" Background="#252526" >
+                    <ListBox Name="List3" Margin="174,10,33,10" Background="#252526" Foreground="White" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}"></TextBlock>
@@ -108,7 +108,7 @@
             </TabItem>
             <TabItem Header="Eigene Konstrukte">
                 <Grid Background="#2d2d30" Margin="0,-1,0,1">
-                    <ListBox Name="List4" Margin="174,10,33,10" Background="#252526">
+                    <ListBox Name="List4" Margin="169,20,38,0" Background="#252526" Foreground="White">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Path=Name}"></TextBlock>

@@ -6,9 +6,9 @@ namespace ClassLibrary
     [Export(typeof(IConditionInterface))]
     public class Switch :Construct, IConditionInterface
     {
-        public Switch()
+        public Switch() : base()
         {
-            enums = new System.Collections.ArrayList();
+           
             enums.Add(InputType.Variable);
             enums.Add(InputType.Conditions);
             variable = "variable";

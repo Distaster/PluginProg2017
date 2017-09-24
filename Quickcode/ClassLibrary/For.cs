@@ -6,9 +6,10 @@ namespace ClassLibrary
     [Export(typeof(ILoopInterface))]
     public class For :Construct, ILoopInterface
     {
-        public For()
+        public For() : base()
         {
-            enums = new System.Collections.ArrayList();
+            
+            //enums = new System.Collections.ArrayList();
             enums.Add(InputType.LoopCondition);
             enums.Add(InputType.VariableValue);
             enums.Add(InputType.LoopCounter);

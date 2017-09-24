@@ -6,9 +6,9 @@ namespace ClassLibrary
     [Export(typeof(ILoopInterface))]
     public class While : Construct,ILoopInterface
     {
-        public While()
+        public While() : base()
         {
-            enums = new System.Collections.ArrayList();
+            
             enums.Add(InputType.LoopCondition);
             enums.Add(InputType.Variable);
             variable = "variable";

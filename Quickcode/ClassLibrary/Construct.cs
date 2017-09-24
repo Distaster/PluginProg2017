@@ -8,6 +8,10 @@ namespace ClassLibrary
 {
     public abstract class Construct : IConstructInterface
     {
+        public Construct()
+        {
+            enums = new ArrayList();
+        }
         public abstract string Name { get; }
        
         protected ArrayList enums;

@@ -6,9 +6,9 @@ namespace ClassLibrary
     [Export(typeof(ILoopInterface))]
     public class Foreach : Construct, ILoopInterface
     {
-        public Foreach()
+        public Foreach() : base()
         {
-            enums = new System.Collections.ArrayList();
+            
             enums.Add(InputType.Variable);
             variable = "Variable";
         }
